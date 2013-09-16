@@ -1,3 +1,0 @@
-[submodule "lib/php-user-agent"]
-	path = lib/php-user-agent
-	url = git@github.com:FindingSimple/php-user-agent.git

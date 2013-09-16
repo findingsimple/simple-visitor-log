@@ -2,7 +2,7 @@
 /*
 Plugin Name: Simple Visitor Log
 Plugin URI: http://plugins.findingsimple.com
-Description: Simple plugin for adding the horizontal rule button to the WordPress editor 
+Description: Simple plugin for logging site visitors
 Version: 1.0
 Author: Finding Simple
 Author URI: http://findingsimple.com
@@ -38,20 +38,26 @@ if ( ! class_exists( 'Simple_Visitor_Log' ) ) {
 		 * Initialise
 		 */
 		function Simple_Visitor_Log() {
-			add_action( 'init', array( $this , 'do_stuff' ) );
-		}
 
-		/**
-		 * Apply appropriate hooks and filters to add the button
-		 */
-		function do_stuff() {
+			global $svl_db_version, $svl_plugin_dir, $svl_plugin_dir_url;
+			
+			$svl_db_version = "1.0";
 
-			/* Stuff to be done */
+			$svl_plugin_dir = plugin_dir_path( __FILE__ );
+
+			$svl_plugin_dir_url = plugin_dir_url( __FILE__ );
+
+			require_once 'classes/class-svl-activate.php';
+			require_once 'classes/class-svl-uninstall.php';
+			require_once 'classes/class-svl-log.php';
 
 		}
 
 	}
 
 	$Simple_Visitor_Log = new Simple_Visitor_Log();
+
+	register_activation_hook( __FILE__, array( 'SVL_Activate', 'svl_add_db_table' ) );
+	register_uninstall_hook(__FILE__, array( 'SVL_Uninstall', 'svl_remove_db_table' ));
 
 }
