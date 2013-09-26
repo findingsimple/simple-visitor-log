@@ -77,13 +77,9 @@ if ( ! class_exists( 'SVL_Log' ) ) {
 		    /** 
 		     * UUID
 		     */
-			if ( isset($_COOKIE['svl_visitor']) ) {
-			    foreach ( $_COOKIE['svl_visitor'] as $name => $value ) { 
-			        if ( $name == 'uuid' ) {
-			        	$data['uuid'] = mysql_real_escape_string( stripslashes( $value ) );
-		    			$format[] = '%s';
-		    		}
-			    }
+			if ( isset($_COOKIE['svl_visitor']['uuid'] ) ) {
+				$data['uuid'] = mysql_real_escape_string( stripslashes( $_COOKIE['svl_visitor']['uuid'] ) );
+		    	$format[] = '%s';	
 			} else {
 			    $data['uuid'] = 0;
 		    	$format[] = '%s';
