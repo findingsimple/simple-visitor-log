@@ -1,10 +1,10 @@
 # Simple Visitor Log #
 
-Contributors: jconroy    
-Tags: log, visitor, unregistered, ajax
+Contributors: jconroy  
+Tags: log, visitor, unregistered, ajax  
 Requires at least: 3.6  
-Tested up to: 3.6.1  
-Stable tag: 1.0
+Tested up to: 3.6.1	 
+Stable tag: 1.0  
 
 Simple visitor logging.
 
